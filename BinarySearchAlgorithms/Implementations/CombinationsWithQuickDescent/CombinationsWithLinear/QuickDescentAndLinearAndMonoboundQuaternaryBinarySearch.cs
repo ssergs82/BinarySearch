@@ -128,7 +128,7 @@ public class QuickDescentAndLinearAndMonoboundQuaternaryBinarySearch : IBinarySe
             middle = high >> 2;
             high -= middle * 3;
 
-            if (key < array[low + middle << 1])
+            if (key < array[low + (middle << 1)])
             {
                 if (OperationCounting.IncreaseNumberOfComparisons(() => key >= array[low + middle], ref numberOfComparisons))
                 {
