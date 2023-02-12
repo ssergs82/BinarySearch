@@ -11,6 +11,7 @@ class Program
         //BenchmarkRunner.Run<SearchAlgorithmsForSortedArrayLinearData256Benchmarks>();
         //BenchmarkRunner.Run<SearchAlgorithmsForSortedArrayLinearData512Benchmarks>();
         //BenchmarkRunner.Run<SearchAlgorithmsForSortedArrayLinearData16kBenchmarks>();
-        BenchmarkRunner.Run<SearchAlgorithmsForSortedArrayLinearData131kBenchmarks>();
+        //BenchmarkRunner.Run<SearchAlgorithmsForSortedArrayLinearData131kBenchmarks>();
+        BenchmarkRunner.Run<SearchAlgorithmsForSortedArrayLinearData1MBenchmarks>();
     }
 }

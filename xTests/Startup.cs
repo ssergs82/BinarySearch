@@ -1,6 +1,4 @@
-﻿using BinarySearchAlgorithms.Implementation;
-using BinarySearchAlgorithms.Implementations.Uniform;
-using BinarySearchAlgorithms.Interfaces;
+﻿using BinarySearchAlgorithms.Interfaces;
 using BinarySearchAlgorithms.Services;
 using Microsoft.Extensions.DependencyInjection;
 using TestData;
