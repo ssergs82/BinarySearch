@@ -7,11 +7,11 @@ namespace BinarySearchAlgorithms.Implementation;
 //monobound_quaternary_search
 public class QuickDescentAndLinearAndMonoboundQuaternaryBinarySearch : IBinarySearch
 {
-    private readonly int _countElementsForLinearSearch;
+    private readonly int _countElementsForLinearSearch = 3;
+    private readonly int _countElementsForQuaternarySearch = 256;
 
     public QuickDescentAndLinearAndMonoboundQuaternaryBinarySearch()
     {
-        _countElementsForLinearSearch = 3;
     }
 
     public QuickDescentAndLinearAndMonoboundQuaternaryBinarySearch(int countElementsForLinearSearch)
@@ -19,8 +19,14 @@ public class QuickDescentAndLinearAndMonoboundQuaternaryBinarySearch : IBinarySe
         _countElementsForLinearSearch = countElementsForLinearSearch;
     }
 
+    public QuickDescentAndLinearAndMonoboundQuaternaryBinarySearch(int countElementsForLinearSearch, int countElementsForQuaternarySearch)
+    {
+        _countElementsForLinearSearch = countElementsForLinearSearch;
+        _countElementsForQuaternarySearch = countElementsForQuaternarySearch;
+    }
+
     //https://github.com/scandum/binary_search
-    //tripletapped_binary_search
+    //monobound_quaternary_search
     public int Find(int[] array, int key)
     {
         if (array == null)
@@ -49,7 +55,7 @@ public class QuickDescentAndLinearAndMonoboundQuaternaryBinarySearch : IBinarySe
         low = high >> 1;
         high -= low;
 
-        while (high >= 65536)
+        while (high >= _countElementsForQuaternarySearch)
         {
             middle = high >> 2;
             high -= middle * 3;
@@ -123,7 +129,7 @@ public class QuickDescentAndLinearAndMonoboundQuaternaryBinarySearch : IBinarySe
         low = high >> 1;
         high -= low;
 
-        while (high >= 65536)
+        while (high >= _countElementsForQuaternarySearch)
         {
             middle = high >> 2;
             high -= middle * 3;
