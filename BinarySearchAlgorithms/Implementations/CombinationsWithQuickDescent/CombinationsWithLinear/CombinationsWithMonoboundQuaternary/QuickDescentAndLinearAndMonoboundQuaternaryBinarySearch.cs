@@ -1,5 +1,4 @@
-﻿using System.Security.Cryptography;
-using BinarySearchAlgorithms.Interfaces;
+﻿using BinarySearchAlgorithms.Interfaces;
 using BinarySearchAlgorithms.Tools;
 
 namespace BinarySearchAlgorithms.Implementation;

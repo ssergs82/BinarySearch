@@ -70,6 +70,19 @@ public class QuickDescentAndLinearFor20ElementsAndMonoboundQuaternary8kBinarySea
     }
 }
 
+public class QuickDescentAndLinearFor20ElementsAndMonoboundQuaternary65kBinarySearch : QuickDescentAndLinearAndMonoboundQuaternaryBinarySearch
+{
+    public QuickDescentAndLinearFor20ElementsAndMonoboundQuaternary65kBinarySearch() : base(20, 65536)
+    {
+    }
+}
+public class QuickDescentAndLinearFor25ElementsAndMonoboundQuaternary65kBinarySearch : QuickDescentAndLinearAndMonoboundQuaternaryBinarySearch
+{
+    public QuickDescentAndLinearFor25ElementsAndMonoboundQuaternary65kBinarySearch() : base(25, 65536)
+    {
+    }
+}
+
 public class QuickDescentAndLinearFor30ElementsAndMonoboundQuaternary256BinarySearch : QuickDescentAndLinearAndMonoboundQuaternaryBinarySearch
 {
     public QuickDescentAndLinearFor30ElementsAndMonoboundQuaternary256BinarySearch() : base(30, 256)
