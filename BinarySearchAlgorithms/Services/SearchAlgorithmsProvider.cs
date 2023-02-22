@@ -2,6 +2,8 @@
 
 public class SearchAlgorithmsProvider
 {
+    public static Func<Type, bool> AlgorithmTypePredicate = (Type t) => { return true; };
+
     public List<T> GetSearchAlgorithms<T>(params Type[] ignoreList)
     {
         List<Type> types = GetSearchAlgorithmsTypes<T>(ignoreList);
@@ -19,6 +21,7 @@ public class SearchAlgorithmsProvider
         var types = AppDomain.CurrentDomain.GetAssemblies()
             .Where(a => (a.FullName.StartsWith("BinarySearchAlgorithms")))
             .SelectMany(s => s.GetTypes())
+            .Where(p => AlgorithmTypePredicate == null || AlgorithmTypePredicate(p))
             .Where(p => !p.IsInterface && type.IsAssignableFrom(p) &&
                 ignoreList.All(t => !(t.IsAssignableFrom(p) || (t.IsClass && t == p)))
             )

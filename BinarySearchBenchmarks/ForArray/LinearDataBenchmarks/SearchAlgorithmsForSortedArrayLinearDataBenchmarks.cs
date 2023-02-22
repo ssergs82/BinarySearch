@@ -2,6 +2,13 @@
 
 namespace BinarySearchBenchmarks.ForArray;
 
+public class SearchAlgorithmsForSortedArrayLinearData8MBenchmarks : SearchAlgorithmsForSortedArrayBenchmarksBase
+{
+    public SearchAlgorithmsForSortedArrayLinearData8MBenchmarks() : base(new DefaultTestDataProvider<int>(), size: 8*1048576)
+    {
+    }
+}
+
 public class SearchAlgorithmsForSortedArrayLinearData1MBenchmarks : SearchAlgorithmsForSortedArrayBenchmarksBase
 {
     public SearchAlgorithmsForSortedArrayLinearData1MBenchmarks() : base(new DefaultTestDataProvider<int>(), size: 1048576)
