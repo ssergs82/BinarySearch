@@ -30,4 +30,5 @@ public interface ITestDataProvider<T>
 
 
     T[] Get(DataGenerationParameters dataGenerationParameters);
+    void Shuffle(T[] array);
 }

@@ -13,7 +13,8 @@ namespace BinarySearchBenchmarks.ForArray
         protected readonly List<IArraySearch> _searchAlgorithms;
         protected readonly List<IUniformBinarySearch> _uniformBinarySearches;
 
-        protected readonly int[] _arrayToTest;
+        protected readonly int[] _sortedArray;
+        protected readonly int[] _shuffledArray;
         protected readonly int _size;
 
         public SearchAlgorithmsForSortedArrayBenchmarksBase(ITestDataProvider<int> testDataProvider, int size)
@@ -33,7 +34,7 @@ namespace BinarySearchBenchmarks.ForArray
 
             _size = size;
             int[] ranges = new int[] { int.MinValue, int.MaxValue };
-            _arrayToTest = _testDataProvider.Get(
+            _sortedArray = _testDataProvider.Get(
                 new DataGenerationParameters
                 {
                     Size = size,
@@ -44,6 +45,11 @@ namespace BinarySearchBenchmarks.ForArray
                     CanHasDuplicates = false
                 }
             );
+
+            //make copy and suffle it - random search approach
+            _shuffledArray = new int[_sortedArray.Length];
+            Array.Copy(_sortedArray, _shuffledArray, _sortedArray.Length);
+            _testDataProvider.Shuffle(_shuffledArray);
         }
 
         public IEnumerable<object[]> FindArguments()
@@ -71,9 +77,9 @@ namespace BinarySearchBenchmarks.ForArray
         [ArgumentsSource(nameof(FindArguments))]
         public void Find(int size, IArraySearch searchAlgorithm, string searchAlgorithmName)
         {
-            foreach (var item in _arrayToTest)
+            foreach (var item in _shuffledArray)
             {
-                searchAlgorithm.Find(_arrayToTest, item);
+                searchAlgorithm.Find(_sortedArray, item);
             }
         }
 
@@ -81,11 +87,11 @@ namespace BinarySearchBenchmarks.ForArray
         [ArgumentsSource(nameof(FindUniformBinarySearchArguments))]
         public void Find(int size, IUniformBinarySearch searchAlgorithm, string searchAlgorithmName)
         {
-            int length = _arrayToTest.Length;
+            int length = _sortedArray.Length;
             int[] deltas = UniformBinarySearch.GetDeltasArray(length);
-            foreach (var item in _arrayToTest)
+            foreach (var item in _shuffledArray)
             {
-                searchAlgorithm.Find(_arrayToTest, item, deltas);
+                searchAlgorithm.Find(_sortedArray, item, deltas);
             }
         }
 
@@ -93,9 +99,9 @@ namespace BinarySearchBenchmarks.ForArray
         [ArgumentsSource(nameof(DefaultSearchFindArguments))]
         public void DefaultFind(int size, IArraySearch searchAlgorithm, string searchAlgorithmName)
         {
-            foreach (var item in _arrayToTest)
+            foreach (var item in _shuffledArray)
             {
-                Array.BinarySearch(_arrayToTest, 0, size, item);
+                Array.BinarySearch(_sortedArray, 0, size, item);
             }
         }
     }

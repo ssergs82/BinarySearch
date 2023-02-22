@@ -10,7 +10,7 @@ class Program
     {
         SearchAlgorithmsProvider.AlgorithmTypePredicate = (Type p) =>
         {
-            return p.Name.Contains("Quaternary", StringComparison.InvariantCultureIgnoreCase);
+            return p.Name.Contains("Monobound", StringComparison.InvariantCultureIgnoreCase);
         };
 
         //BenchmarkRunner.Run<SearchAlgorithmsForSortedArrayLinearData16Benchmarks>();

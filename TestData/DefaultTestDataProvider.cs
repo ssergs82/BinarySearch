@@ -98,16 +98,7 @@ public class DefaultTestDataProvider<T>: ITestDataProvider<T>
             }
             else
             {
-                int swapIndex;
-                T tmp;
-                for (long pos = 0; pos < dataGenerationParameters.Size; pos++)
-                {
-                    swapIndex = _rand.Next(0, dataGenerationParameters.Size);
-
-                    tmp = result[pos];
-                    result[pos] = result[swapIndex];
-                    result[swapIndex] = tmp;
-                }
+                Shuffle(result);
             }
 
             if (!_cache.ContainsKey(dataGenerationParameters))
@@ -117,5 +108,17 @@ public class DefaultTestDataProvider<T>: ITestDataProvider<T>
         }
 
         return _cache[dataGenerationParameters];
+    }
+
+    public void Shuffle(T[] array)
+    {
+        int n = array.Length;
+        while (n > 1)
+        {
+            int k = _rand.Next(n--);
+            T temp = array[n];
+            array[n] = array[k];
+            array[k] = temp;
+        }
     }
 }
