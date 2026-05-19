@@ -15,6 +15,12 @@ public class Startup
             services.AddSingleton(searchAlgorithmType);
         });
 
+        var uniformSearchAlgorithmsTypes = SearchAlgorithmsProvider.GetSearchAlgorithmsTypes<IUniformBinarySearch>();
+        uniformSearchAlgorithmsTypes.ForEach(searchAlgorithmType =>
+        {
+            services.AddSingleton(searchAlgorithmType);
+        });
+
         services.AddSingleton(typeof(DefaultTestDataProvider<>), typeof(DefaultTestDataProvider<>));
         services.AddSingleton<SearchAlgorithmsProvider>();
         services.AddLogging();
